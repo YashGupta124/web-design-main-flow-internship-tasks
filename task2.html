@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Webpage</title>
+  <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Responsive Webpage</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" onclick="toggleContent('home')">Home</a></li>
+        <li><a href="#about" onclick="toggleContent('about')">About</a></li>
+        <li><a href="#contact" onclick="toggleContent('contact')">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="home-content" class="content" style="display: none;">
+      <h2>Home Section</h2>
+      <p>Hi! I am Yash. This is my mainflow services web designer internship.</p>
+    </section>
+    
+    <section id="about-content" class="content" style="display: none;">
+      <h2>About Section</h2>
+      <p>Name: Yash Gupta</p>
+      <p>Age: 21</p>
+      <p>Occupation: Student</p>
+      <p>Institution: Galgotias University</p>
+      <p>Internship: Web Design</p>
+    </section>
+    
+    <section id="contact-content" class="content" style="display: none;">
+      <h2>Contact Section</h2>
+      <p>Phone: 5426846855</p>
+      <p>E-mail: abcd@gmail.com</p>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Responsive Webpage. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleContent(sectionId) {
+      var selectedSection = document.getElementById(sectionId + "-content");
+
+      // Hide all content sections
+      var contentSections = document.getElementsByClassName("content");
+      for (var i = 0; i < contentSections.length; i++) {
+        contentSections[i].style.display = "none";
+      }
+
+      // Show the selected content section
+      selectedSection.style.display = "block";
+    }
+  </script>
+</body>
+</html>
