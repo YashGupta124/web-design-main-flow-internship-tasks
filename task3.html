@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Webpage</title>
+  <link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Interactive Webpage</h1>
+    <nav>
+      <ul>
+        <li><a href="#form" onclick="toggleContent('form')">Form</a></li> <!-- Only form tab remaining -->
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="form-content" class="content">
+      <h2>Form Section</h2>
+      <form id="myForm" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="roll">Roll:</label>
+        <input type="text" id="roll" name="roll" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea><br>
+
+        <input type="submit" value="Submit">
+      </form>
+
+      <div id="formData"></div> <!-- Container to display form data -->
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 Interactive Webpage. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleContent(sectionId) {
+      var selectedSection = document.getElementById(sectionId + "-content");
+
+      // Hide all content sections
+      var contentSections = document.getElementsByClassName("content");
+      for (var i = 0; i < contentSections.length; i++) {
+        contentSections[i].style.display = "none";
+      }
+
+      // Show the selected content section
+      selectedSection.style.display = "block";
+    }
+
+    function submitForm(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      var formData = new FormData(document.getElementById("myForm"));
+      var data = {};
+      formData.forEach(function (value, key) {
+        data[key] = value;
+      });
+
+      // Display form data dynamically
+      var formDataDiv = document.getElementById("formData");
+      formDataDiv.innerHTML = "<h3>Form Data:</h3>";
+      for (var key in data) {
+        formDataDiv.innerHTML += "<p><strong>" + key + ":</strong> " + data[key] + "</p>";
+      }
+    }
+  </script>
+</body>
+</html>
